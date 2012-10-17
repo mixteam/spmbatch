@@ -9,6 +9,7 @@ var VERSION = '0.2.0',
 
 	options = {
 		basedir : './',
+		log : true,
 		cmd : undefined
 	}
 	;
@@ -44,7 +45,9 @@ function runCommand(dir, cmd) {
 		if (err)  {
 			util.error(cmd + ' "' + dir + '" error');
 		} else {
-			fs.writeFileSync(spmFile, stdout || stderr, 'utf8');
+			if (options.log) {
+				fs.writeFileSync(spmFile, stdout || stderr, 'utf8');
+			}
 			util.debug(cmd + ' "' + dir + '" success');
 		}
 	});
@@ -85,6 +88,10 @@ function main(argv) {
 			case '-d':
 			case '--dir':
 				options.basedir = args.shift();
+				break;
+			case '--nolog':
+				options.log = false;
+				break;
 			case '-v':
 			case '--version':
 				sys.print('version ' + VERSION);
