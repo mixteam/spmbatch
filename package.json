@@ -1,0 +1,7 @@
+{
+    "name" : "mix/tools/spmbatch",
+    "description" : "spm batch",
+    "author" : "zhuxun <zhuxun.jb@taobao.com>",
+    "version" : "0.2.0",
+    "main" : "./src/spmbatch.js"
+}
