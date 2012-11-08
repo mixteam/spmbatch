@@ -94,11 +94,7 @@ function main(argv) {
 				break;
 			case '-v':
 			case '--version':
-				if (typeof sys === "undefined"){
-					util.print('version ' + VERSION+"\n");
-				}else{
-					sys.print('version ' + VERSION+"\n");
-				}
+				util.print('version ' + VERSION+"\n");
 				process.exit(0);
 				break;
 			default:
