@@ -77,7 +77,7 @@ function batch(dir) {
 
 
 function main(argv) {
-
+	
 	var args = argv.slice(2)
 		;
 
@@ -94,7 +94,11 @@ function main(argv) {
 				break;
 			case '-v':
 			case '--version':
-				sys.print('version ' + VERSION);
+				if (typeof sys === "undefined"){
+					util.print('version ' + VERSION+"\n");
+				}else{
+					sys.print('version ' + VERSION+"\n");
+				}
 				process.exit(0);
 				break;
 			default:
