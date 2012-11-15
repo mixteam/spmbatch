@@ -1,7 +1,32 @@
 {
-    "name" : "mix/tools/spmbatch",
+    "name" : "spmbatch",
+    "version" : "0.2.0",
     "description" : "spm batch",
     "author" : "zhuxun <zhuxun.jb@taobao.com>",
-    "version" : "0.2.0",
-    "main" : "./src/spmbatch.js"
+	"keywords": [
+		"spm",
+		"spmbatch",
+		"module",
+		"package",
+		"optimization",
+		"tool",
+		"batch"
+	],
+	"engines": {
+		"node": ">= 0.8.1"
+	},
+	"devDependencies": {
+		"spm": ">= 0.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/mixteam/spmbatch.git"
+	},
+    "main" : "./src/spmbatch.js",
+	"bin": {
+		"spmbatch": "./src/spmbatch.js"
+	},
+	"readme": "基于spm的一个批处理工具",
+	"_id": "spmbatch@0.2.0",
+	"_from": "spmbatch"
 }

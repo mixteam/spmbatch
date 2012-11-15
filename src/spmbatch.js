@@ -61,7 +61,7 @@ function batch(dir) {
 		
 		fs.readdir(dir, function(err, files) {
 			files.forEach(function(file) {
-				if (file in ['.', '..', '.git']) return;
+				if (file in ['.', '..', '.git', '.svn']) return;
 
 				var subdir = path.join(dir, file),
 					stat = fs.statSync(subdir)
@@ -76,30 +76,32 @@ function batch(dir) {
 }
 
 
-function main(argv) {
-	
-	var args = argv.slice(2)
-		;
+function main(args) {
+	if (args && args instanceof Array){
+		while (args.length > 0) {
+			var v = args.shift();
 
-	while (args.length > 0) {
-		var v = args.shift();
-
-		switch(v) {
-			case '-d':
-			case '--dir':
-				options.basedir = args.shift();
-				break;
-			case '--nolog':
-				options.log = false;
-				break;
-			case '-v':
-			case '--version':
-				util.print('version ' + VERSION+"\n");
-				process.exit(0);
-				break;
-			default:
-				options.cmd = v;
-				break;
+			switch(v) {
+				case '-d':
+				case '--dir':
+					options.basedir = args.shift();
+					break;
+				case '--nolog':
+					options.log = false;
+					break;
+				case '-v':
+				case '--version':
+					util.print('version ' + VERSION+"\n");
+					process.exit(0);
+					break;
+				default:
+					options.cmd = v;
+					break;
+			}
+		}
+	} else if (args && typeof args === 'object') {
+		for (var k in opt) {
+			options[k] = opt[k];
 		}
 	}
 
@@ -111,7 +113,7 @@ function main(argv) {
 }
 
 if (require.main === module) {
-	main(process.argv);
+	main(process.argv.slice(2));
 } else {
 	module.exports = main;
 }
