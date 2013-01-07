@@ -13,10 +13,11 @@
 
 	$ spmbatch command [options]
 
-* command：可使用build和upload命令，默认会以`spm build -compiler=closure`和`spm upload`来执行。
+* command：可使用build和upload命令，默认会以`spm build`和`spm upload`来执行。
 
 * options（可选）：
 	* [-d/--dir] 指定执行的目录
+	* [-p/--process] 指定spm的进程，默认为`spm`
 	* [-v/--version] 显示spmbatch版本
 	* [--nolog] 不生成`.spm`日志文件
 

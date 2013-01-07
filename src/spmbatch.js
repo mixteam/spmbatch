@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // -*- js -*-
 
-var VERSION = '0.2.0',
+var VERSION = '0.2.1',
 	path = require('path'),
 	util = require('util'),
 	fs = require('fs'),
@@ -10,11 +10,12 @@ var VERSION = '0.2.0',
 	options = {
 		basedir : './',
 		log : true,
+		process : 'spm',
 		cmd : undefined
 	}
 	;
 
-function isSpmModule(dir) {
+function isModule(dir) {
 	var packageFile = path.join(dir, 'package.json')
 		;
 
@@ -34,11 +35,11 @@ function isIgnore(dir) {
 	}
 }
 
-function runCommand(dir, cmd) {
+function runCommand(dir, prs, cmd) {
 	var spmFile = path.join(dir, '.spm')
 		;
 
-	exec('spm ' + cmd + ' -compiler=closure', {
+	exec(prs + ' ' + cmd, {
 		cwd : dir,
 		encoding : 'utf8'
 	}, function(err, stdout, stderr) {
@@ -55,8 +56,8 @@ function runCommand(dir, cmd) {
 
 function batch(dir) {
 	if (!isIgnore(dir)) {
-		if (isSpmModule(dir)) {
-			runCommand(dir, options.cmd);
+		if (isModule(dir)) {
+			runCommand(dir, options.process, options.cmd);
 		}
 		
 		fs.readdir(dir, function(err, files) {
@@ -85,6 +86,10 @@ function main(args) {
 				case '-d':
 				case '--dir':
 					options.basedir = args.shift();
+					break;
+				case '-p':
+				case '--process':
+					option.process = args.shift();
 					break;
 				case '--nolog':
 					options.log = false;

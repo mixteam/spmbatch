@@ -1,6 +1,6 @@
 {
     "name" : "spmbatch",
-    "version" : "0.2.0",
+    "version" : "0.2.1",
     "description" : "spm batch",
     "author" : "zhuxun <zhuxun.jb@taobao.com>",
 	"keywords": [
@@ -27,6 +27,6 @@
 		"spmbatch": "./src/spmbatch.js"
 	},
 	"readme": "基于spm的一个批处理工具",
-	"_id": "spmbatch@0.2.0",
+	"_id": "spmbatch@0.2.1",
 	"_from": "spmbatch"
 }
