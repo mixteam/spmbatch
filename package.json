@@ -20,7 +20,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/mixteam/spmbatch.git"
+		"url": "git@github.com:mixteam/mixtools_spmbatch.git"
 	},
     "main" : "./src/spmbatch.js",
 	"bin": {
