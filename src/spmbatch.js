@@ -1,6 +1,3 @@
-#!/usr/bin/env node
-// -*- js -*-
-
 var VERSION = '0.2.1',
 	path = require('path'),
 	util = require('util'),
