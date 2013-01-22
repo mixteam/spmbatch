@@ -1,4 +1,4 @@
-var VERSION = '0.2.1',
+var VERSION = '0.2.2',
 	path = require('path'),
 	util = require('util'),
 	fs = require('fs'),
@@ -86,7 +86,7 @@ function main(args) {
 					break;
 				case '-p':
 				case '--process':
-					option.process = args.shift();
+					options.process = args.shift();
 					break;
 				case '--nolog':
 					options.log = false;
